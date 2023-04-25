@@ -10,14 +10,6 @@ return {
     local cmp = require "cmp"
     local luasnip = require "luasnip"
 
-    local function next_item()
-      if cmp.visible() then
-        cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
-      else
-        cmp.complete()
-      end
-    end
-
     return require("astronvim.utils").extend_tbl(opts, {
       window = {
         completion = {
@@ -38,18 +30,16 @@ return {
         { name = "buffer",            priority = 250 },
       },
       mapping = {
-        ["<C-n>"] = next_item,
-        ["<C-j>"] = next_item,
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if luasnip.jumpable(1) then
-            luasnip.jump(1)
+          if cmp.visible() then
+            cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
           else
             fallback()
           end
         end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if luasnip.jumpable(-1) then
-            luasnip.jump(-1)
+          if cmp.visible() then
+            cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
           else
             fallback()
           end

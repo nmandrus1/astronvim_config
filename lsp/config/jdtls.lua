@@ -8,7 +8,7 @@ return {
     -- calculate workspace dir
     local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
     local workspace_dir = vim.fn.stdpath "data" .. "/site/java/workspace-root/" .. project_name
-    -- local _ = os.execute("mkdir " .. workspace_dir)
+    -- os.execute("mkdir " .. workspace_dir)
     local _ = vim.fn.jobstart("mkdir " .. workspace_dir)
 
     -- get the mason install path

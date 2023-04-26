@@ -26,5 +26,5 @@ return function()
     },
   }
 
-  require "user.autocmds"
+  -- require "user.autocmds"
 end

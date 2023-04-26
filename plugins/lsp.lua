@@ -1,8 +1,4 @@
 return {
-  {
-    "mfussenegger/nvim-jdtls",
-    init = function() table.insert(astronvim.lsp.skip_setup, "jdtls") end,
-    ft = { "java" },
-  },
+  "mfussenegger/nvim-jdtls",
   "simrat39/rust-tools.nvim",
 }
